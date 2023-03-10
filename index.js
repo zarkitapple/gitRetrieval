@@ -26,7 +26,7 @@ let allrepos = repos.map(repo => {
 
 // filter by regex
 allrepos = allrepos.filter(repo => {
-    return repo.name.match(`^G81.2022.[0-9]{2}.E${process.env.EXERCISE_ID}$`);
+    return repo.name.match(`^G01.2023.T[0-9]{2}.EG${process.env.EXERCISE_ID}$`);
 });
 
 // sort by name
@@ -43,18 +43,18 @@ console.log(allrepos);
 
 // Uncomment the next lines to download and clone de repos
 
-//fs.mkdirSync(`./ge${process.env.EXERCISE_ID}`, { mode: 0o777 });
-//process.chdir(`./ge${process.env.EXERCISE_ID}`);
+fs.mkdirSync(`./${process.env.EXERCISE_ID}`, { mode: 0o777 });
+process.chdir(`./${process.env.EXERCISE_ID}`);
 
 //git clone repositories
-// allrepos.forEach(repo => {
-//     const cmd = `git clone https://github.com/${repo.owner}/${repo.name}.git`;
-//     console.log(cmd);
-//     exec(cmd, (err, stdout, stderr) => {
-//         if (err) {
-//             console.log(err);
-//             return;
-//         }
-//         console.log(stdout);
-//     });
-// });
+allrepos.forEach(repo => {
+    const cmd = `git clone https://github.com/${repo.owner}/${repo.name}.git`;
+    console.log(cmd);
+    exec(cmd, (err, stdout, stderr) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log(stdout);
+    });
+});
