@@ -10,4 +10,4 @@ https://nodejs.org/es/
     EXERCISE_ID=<exerciseNumber>
     ```
 3. Run npm install
-4. node .
+4. node . If argument --dry-run is passed, it will only print the result, otherwise it will create and download the files
